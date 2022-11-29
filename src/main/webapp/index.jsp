@@ -5,11 +5,11 @@
 <body>
 	<h1>Personal Information about Myself!</h1>
 	<p>
-		Name : Sharath 
+		Name : Neil 
 	<p>
-		Experience : 4 years
+		Experience : 3 years
         <p>
-		Company : Accenture
+		Company : Parle Elizabeth 
 	<P>    
 		Hobbies : watching movies, cooking and playing cricket
 </body>
