@@ -25,12 +25,11 @@
 			</plugin>
 		</plugins>
 	</build>
-	  <distributionManagement>
+	   <distributionManagement>
                                <repository>
                                            <id>central</id>
                                            <name>a0sodfkjwtaqc-artifactory-primary-0-releases</name>
                                            <url>https://ebenneil.jfrog.io/artifactory/libs-release</url>
                                </repository>
         </distributionManagement>
-
 </project>
