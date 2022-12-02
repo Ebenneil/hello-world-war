@@ -2,7 +2,7 @@ pipeline {
 	agent none
         stages {
            stage ("tomcat buid & move to other node") {
-	       agent {label "tom"}
+	       agent {label "banglore"}
               steps {
 		      sh "echo ${BUILD_NUMBER}"
                       sh 'mvn deploy'
@@ -11,7 +11,7 @@ pipeline {
 	      }
 	   }
 	   stage ('diploy in node2') {
-	      agent {label "banglore"}
+	      agent {label "tom"}
 	   	steps {
 		    sh 'curl -u neilp.cool@gmail.com:Devops123451! -O https://ebenneil.jfrog.io/artifactory/libs-release-local/com/efsavage/hello-world-war/${BUILD_NUMBER}/hello-world-war${BUILD_NUMBER}.war'
 		    sh 'sudo cp -R hello-world-war-${BUILD_NUMBER}.war /opt/tomcat/webapps/'
