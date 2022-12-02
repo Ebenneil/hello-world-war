@@ -4,6 +4,7 @@ pipeline {
            stage ("tomcat buid & move to other node") {
 	       agent {label "tom"}
               steps {
+		      sh "echo ${Build_Number}"
                       sh 'sudo mvn package'
 		      sh 'ls'
 		      sh 'scp -R target/hello-world-war-1.0.0.war banglore@172.31.34.151:/opt/tomcat/webapps'
