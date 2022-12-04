@@ -1,27 +1,22 @@
 pipeline {
-	agent none
-        stages {
-           stage ("tomcat buid & move to other node") {
-	       agent {label "tom"}
+	agent {label 'tom'}
+       stages {
+           stage ('Build') {
               steps {
-		      sh "echo ${BUILD_NUMBER}"
-                      sh 'mvn deploy'
-		      sh 'ls'
-		      echo "sucessfully copied build to other node"
-	      }
-	   }
-	   stage ('diploy in node2') {
-	      agent {label "banglore"}
-	   	steps {
-		    sh 'curl -u neilp.cool@gmail.com:Devops@12345 -O https://ebenneil.jfrog.io/artifactory/libs-release-local/com/efsavage/hello-world-war/${BUILD_NUMBER}/hello-world-war-${BUILD_NUMBER}.war'
-		    sh 'sudo cp -R hello-world-war-${BUILD_NUMBER}.war /opt/tomcat/webapps'
-		    sh 'sudo sh /opt/tomcat/bin/shutdown.sh'                   
-                    sh 'sudo sleep 3'
-                    sh 'sudo sh /opt/tomcat/bin/startup.sh'
-                    echo "diployment is sucessfull"
-                    echo "copy the public ip of instace and open it in browser with port:8090"
-	     }
-	  }
-	} 	   
-      }
- 
+                 sh 'mvn package'
+                 sh 'pwd'
+                 sh 'whoami'
+                 sh 'scp -R /home/tom/workplace/declarative_pipeline/target/hello-world-war-1.0.0.war server@172.31.12.90:/opt/tomcat/webapps'
+                }
+           }
+           stage ('deploy') {
+           agent {label 'banglore'}
+               steps {
+                  sh 'pwd'
+                  sh 'sudo sh /opt/tomcat/bin/shutdown.sh'
+                  sh 'sleep 2'
+                  sh 'sudo sh /opt/tomcat/bin/startup.sh'
+                 }
+               }
+           }
+       }
