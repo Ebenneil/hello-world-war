@@ -6,7 +6,7 @@ pipeline {
               steps {
                       sh 'sudo mvn package'
 		      sh 'ls'
-		      sh 'scp -R target/hello-world-war-1.0.0.war build@172.31.34.237:/opt/tomcat/webapps/'
+		      sh 'scp -R /home/slave/workspace/job1/target/hello-world-war-null.war build@172.31.34.237:/opt/tomcat/webapps/'
 		      echo "sucessfully copied build to other node"
 		      sh 'pwd'
 	      }
