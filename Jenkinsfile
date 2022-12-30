@@ -2,7 +2,7 @@ pipeline {
 	agent none
         stages {
            stage ("Build") {
-	       agent {label "tom"}
+	       agent {label "slave"}
               steps {
                       sh 'sudo mvn package'
 		      sh 'ls'
@@ -11,7 +11,7 @@ pipeline {
 	      }
 	   }
 	   stage ('diploy') {
-	      agent {label "banglore"}
+	      agent {label "build"}
 	   	steps {
 		    sh 'sudo sh /opt/tomcat/bin/shutdown.sh'                   
                     sh 'sudo sleep 3'
