@@ -10,8 +10,8 @@ pipeline {
 		      echo "sucessfully copied build to other node"
 	      }
 	   }
-	   stage ('diploy') {
-	      agent {label "build"}
+	   stage ('deploy') {
+	      agent {label "slavebuild"}
 	   	steps {
 		    sh 'sudo sh /opt/tomcat/bin/shutdown.sh'                   
                     sh 'sudo sleep 3'
