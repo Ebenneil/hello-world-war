@@ -1,3 +1,5 @@
+
+
 pipeline {
     agent {label 'slave'}
     stages {
@@ -14,7 +16,7 @@ pipeline {
             steps {
               sh 'pwd'
               sh 'whoami'
-              sh 'curl -u neilp.cool@gmail.com:Neil886778353831! -O https://neilpinto.jfrog.io/artifactory/libs-release-local/com/efsavage/hello-world-war/${BUILD_NUMBER}/hello-world-war-${BUILD_NUMBER}.war'
+              sh 'curl -u neilp.cool@gmail.com:Neil886778353831! -O https://neilpinto.jfrog.io//artifactory/libs-release/com/efsavage/hello-world-war/${BUILD_NUMBER}/hello-world-war-${BUILD_NUMBER}.war'
               sh 'sudo cp -R hello-world-war-${BUILD_NUMBER}.war /opt/tomcat/webapps/'
               sh 'sudo sh /opt/tomcat/bin/shutdown.sh'
               sh 'sleep 2'
